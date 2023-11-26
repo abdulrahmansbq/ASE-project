@@ -4,16 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Patient extends Model
 {
     use HasFactory;
 
     /**
-     * Relationship with Drug model
+     * Relationship with Bill model
      */
-    public function drugs()
+    public function bills(): HasMany
     {
-        return $this->belongsToMany(Drug::class, 'drug_patient', 'patient_id', 'drug_id');
+        return $this->hasMany(Bill::class);
     }
 }
