@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('drug_patient', function (Blueprint $table) {
-            $table->foreignId('drug_id')->constrained();
-            $table->foreignId('patient_id')->constrained();
-            $table->integer('quantity');
-            $table->decimal('price');
+        Schema::create('bill_drug', function (Blueprint $table) {
+            $table->foreignId('bill_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('drug_id')->constrained()->cascadeOnDelete();
         });
     }
 
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('drug_patient');
+        Schema::dropIfExists('bill_drug');
     }
 };
