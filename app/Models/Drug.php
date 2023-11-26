@@ -16,12 +16,4 @@ class Drug extends Model
     {
         return $query->where('quantity', '>', 0);
     }
-
-    /**
-     * Relationship with Patient model
-     */
-    public function patients()
-    {
-        return $this->belongsToMany(Patient::class, 'patient_drug', 'drug_id', 'patient_id');
-    }
 }
