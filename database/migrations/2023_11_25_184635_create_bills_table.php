@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
             $table->foreignId('patient_id')->constrained();
+            $table->decimal('extra_charges')->default(0);
             $table->decimal('total_price');
+            $table->unsignedTinyInteger('status')->default(1);
             $table->timestamps();
         });
     }
